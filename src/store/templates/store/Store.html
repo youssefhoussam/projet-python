@@ -1,0 +1,30 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+     <!-- Welcoming Message -->
+     <div class="row mb-4">
+          <div class="col-12">
+               <div class="alert alert-success" role="alert">
+                    <h1 class="text-center">Welcome to Emsi project shop!</h1>
+                    <h5 class="text-center">Prepare for a shop-till-you-drop quest that’ll make your wallet play peek-a-boo!</h5>
+               </div>
+          </div>
+     </div>
+
+     <!-- Products List -->
+     <div class="row">
+          {% for product in products %}
+               <div class="col-lg-4">
+                    <img class="thumbnail" src="{{product.image.url}}">
+                    <div class="box-element product">
+                         <h6><strong>{{product.name}}</strong></h6>
+                         <hr>
+                         <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Ajouter au panier</button>
+                         <h4 style="display: inline-block; float: right"><strong>{{product.price|floatformat:2}} DH</strong></h4>
+                    </div>
+               </div>
+          {% endfor %}
+     </div>
+{% endblock content %}
+
+
